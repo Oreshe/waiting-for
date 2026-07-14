@@ -1,0 +1,25 @@
+{
+    "id": "waiting-for-you-app",
+    "name": "Waiting for you",
+    "short_name": "Waiting for you",
+    "description": "Мій милий таймер зворотного відліку з котиками та підтримкою",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#fff0f5",
+    "theme_color": "#fff0f5",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "assets/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

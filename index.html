@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waiting for You</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <div id="pwa-check-screen">
+        <div class="loader-container">
+            <h1>Де ти зараз відкрила це? 👀</h1>
+            <button id="opened-in-site-btn" type="button" style="margin-bottom: 12px;">Просто в браузері (як сайт) 🌐</button>
+            <button id="opened-in-app-btn" type="button" class="secondary-btn">Уже як додаток на телефоні 📱</button>
+        </div>
+    </div>
+
+    <div id="pwa-instruction-screen" style="display: none;">
+        <div class="loader-container">
+            <h1>Давай зробимо це додатком! ✨</h1>
+            <p class="loader-text" style="margin-bottom: 20px; text-align: left;">
+                1. Натисни на <b>три крапки</b> (або кнопку «Поділитися» в Safari).
+                <br>2. Обери пункт <b>«Додати на початковий екран»</b> (або «Встановити додаток»).
+                <br>3. Закрий вкладку браузера, знайди іконку додатка на екрані телефону та зайди через неї! ❤️
+                <br><br>
+                ⚠️ <b>Важливо:</b> Для першого входу обов'язково потрібен інтернет, щоб завантажилися всі ресурси. Далі додаток працюватиме повністю офлайн.
+            </p>
+            <img src="assets/icons/icon-512x512.png" alt="Іконка додатка" style="width: 120px; height: 120px; border-radius: 24px; margin: 0 auto; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+
+    <div id="pwa-loader-screen" style="display: none;">
+        <div class="loader-container">
+            <h2>Магія завантажується... ✨</h2>
+            <div class="loader-ring"></div>
+        </div>
+    </div>
+
+    <div id="welcome-screen" style="display: none;">
+        <h1>Ти вже вирушаєш у дорогу? 🚌✈️</h1>
+        <div id="welcome-content">
+            <img src="assets/images/welcome.jpg" alt="Привітання">
+            <button id="not-yet-btn" type="button">Ще ні ❤️</button>
+            <button id="yes-btn" type="button">Так 🥹...</button>
+        </div>
+    </div>
+
+    <div id="warning-screen" style="display: none;">
+        <h1>Тоді проводь більше часу з близькими, а не сиди в додатках! 😡</h1>
+        <img src="assets/images/angry.jpg" alt="Злий котик">
+        <button id="close-warning-btn" type="button">Так вже й бути, побуду з вами ще трохи 🙄</button>
+    </div>
+
+    <div id="date-screen" style="display: none;">
+        <h1>Вже сумую за тобою... 🙈</h1>
+        <h1>Обери дату свого повернення!</h1>
+        <input id="return-date-input" type="date">
+        <button id="start-timer-btn" type="button">Почати зворотний відлік ⏱️</button>
+    </div>
+
+    <div id="main" style="display: none;">
+        <h1>До твоєї появи залишилось:</h1>
+        <div class="timer-grid">
+            <div><h2 id="timer-days">0</h2>днів</div>
+            <div><h2 id="timer-hours">0</h2>годин</div>
+            <div><h2 id="timer-minutes">0</h2>хвилин</div>
+            <div><h2 id="timer-seconds">0</h2>секунд</div>
+        </div>
+        <img id="support-img" src="" alt="Мила підтримка">
+        <p id="support-quote">Тут буде цитата підтримки</p>
+        <button id="settings" type="button">Змінити дату ⚙️</button>
+    </div>
+
+    <div id="change-date" style="display: none;">
+        <h1>Ого, вирішила змінити дату? 😧</h1>
+        <h1>Сподіваюсь, ти повернешся ще швидше...</h1>
+        <input id="new-date-input" type="date">
+        <button id="start-timer-again" type="button">Повернутися до відліку ⏱️</button>
+    </div>
+
+    <div id="birthday-screen" style="display: none;">
+        <h1>З Днем Народження! 🥳🎂🎉</h1>
+        
+        <p class="bday-wishes">
+            Мій любий друже! Ми пройшли з тобою неймовірний шлях крізь роки. 
+            Сьогодні ти далеко, але пам'ятай, що моя підтримка завжди поруч, на якій би відстані ми не були. 
+            Ти неймовірна людина, яка заслуговує на все найкраще у цьому світі! ❤️
+        </p>
+
+        <p class="bday-explanation">
+            Сьогодні особливий день, тому я тимчасово вимкнула цей таймер. 
+            <b>Не думай зараз про час, про дні чи секунди — сьогодні твій день, і нехай жодні цифри не відволікають тебе від свята! ✨</b> 
+        </p>
+
+        <div class="bday-hero-photo">
+            <img src="assets/images/bday_hero.jpg" alt="Святкове фото">
+        </div>
+
+        <div class="bday-section">
+            <h2>Яскраві моменти нашої дружби ✨</h2>
+            <div class="photo-grid">
+                <img src="assets/images/bday_1.jpg" alt="Наші спогади">
+                <img src="assets/images/bday_2.jpg" alt="Наші спогади">
+                <img src="assets/images/bday_3.jpg" alt="Наші спогади">
+                <img src="assets/images/bday_4.jpg" alt="Наші спогади">
+                <img src="assets/images/bday_5.jpg" alt="Наші спогади">
+                <img src="assets/images/bday_6.jpg" alt="Наші спогади">
+            </div>
+        </div>
+
+        <div class="bday-section">
+            <h2>А пам'ятаєш, як усе починалось? 🥺</h2>
+            <div class="photo-grid old-photos">
+                <img src="assets/images/bday_7.jpg" alt="Архівні спогади">
+                <img src="assets/images/bday_8.jpg" alt="Архівні спогади">
+                <img src="assets/images/bday_9.jpg" alt="Архівні спогади">
+            </div>
+        </div>
+
+        <div class="bday-promise">
+            <p>
+                І ще дещо... 🤫 
+                Оскільки я не можу привітати тебе фізично прямо зараз, знай — <b>твій подарунок уже дуже-дуже чекає на тебе вдома!</b> 
+                Це буде щось абсолютно особливе. Ми виберемо його разом, коли ти повернешся, щоб усе підійшло ідеально.
+            </p>
+            <p>
+                Дякую тобі за те, що ти є в моєму житті, і за те, що наш зв'язок витримує будь-які відстані. 
+                Міцно обіймаю тебе через усі кілометри! 🫂💖
+            </p>
+        </div>
+    </div>
+
+    <div id="final-screen" style="display: none;">
+        <h1>Ураааа! Час настав! Ти їдеш додому! 🎉🚌✈️</h1>
+        <p class="final-text">
+            Цей відліковий марафон офіційно ЗАВЕРШЕНО! 
+            Якщо ти читаєш це, значить ти вже збираєш речі, купуєш квитки або прямо зараз у дорозі. 
+            Я неймовірно сильно пишаюся твоєю витримкою і тим, що ти впоралася з цим викликом! 🥹
+        </p>
+        <p class="final-subtext">
+            Готуй неймовірні історії та швидше повертайся! Я вже дуже чекаю на тебе! Міцно обіймаю! 🫂❤️
+        </p>
+        <img src="assets/images/final.jpg" alt="Ура, зустріч!">
+        
+        <button id="settings-final" type="button" style="margin-top: 20px;">Змінити дату ⚙️</button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

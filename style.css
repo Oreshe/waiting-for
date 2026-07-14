@@ -1,0 +1,318 @@
+/* --- ГЛОБАЛЬНІ СТИЛІ --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #4a4a4a;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* --- ГОЛОВНІ КАРТКИ-КОНТЕЙНЕРИ --- */
+#welcome-screen, #warning-screen, #date-screen, #main, #change-date, #birthday-screen, #final-screen {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 30px 24px;
+    width: 100%;
+    max-width: 420px; /* Чітка мобільна ширина */
+    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    position: relative; /* Дозволяє внутрішнім елементам позиціонуватися відносно кутів картки */
+    overflow: hidden;
+    
+    animation: fadeInScreen 0.6s ease-out forwards;
+}
+
+/* Спеціально для таймера додаємо відступ знизу для нашої кнопки */
+#main {
+    padding-bottom: 45px; 
+}
+
+@keyframes fadeInScreen {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Заголовки */
+h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #6c5b7b;
+    line-height: 1.4;
+}
+
+/* --- СІТКА ТАЙМЕРА --- */
+.timer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: #a7a7a7;
+    text-transform: lowercase;
+}
+
+h2 {
+    font-size: 2.2rem;
+    color: #ff758c;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+/* --- КАРТИНКА ТА ЦИТАТА ТАЙМЕРА (ІДЕАЛЬНИЙ ЦЕНТР) --- */
+#support-img {
+    width: 100%;
+    height: 280px; 
+    display: block;
+    object-fit: cover; /* Pinterest-ефект */
+    border-radius: 16px;
+    margin: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#support-quote {
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #4a4a4a;
+    background: linear-gradient(135deg, #fffafa 0%, #fff0f5 100%);
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid #ffe4e1;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Картинки для інших екранів */
+#welcome-screen img, #warning-screen img, #final-screen img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    margin: 15px auto;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* --- КНОПКИ ТА ІНПУТИ --- */
+button {
+    width: 100%;
+    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 117, 140, 0.4);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* --- МАЛЕНЬКА КНОПКА НАЛАШТУВАНЬ ЗБОКУ В КУТОЧКУ КАРТКИ --- */
+#settings {
+    position: absolute !important;
+    bottom: 12px !important;
+    right: 20px !important;
+    width: auto !important; /* Скасовуємо розтягування на 100% */
+    
+    background: none !important;
+    color: #b0b0b0 !important;
+    box-shadow: none !important;
+    padding: 5px !important;
+    font-size: 0.75rem !important; /* Крихітний розмір */
+    border: none !important;
+    text-transform: none !important; /* З Великої літери */
+    opacity: 0.6;
+    margin: 0 !important;
+    z-index: 50; /* Тепер вона точно вище за цитату і клікається! */
+    
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+#settings:hover {
+    color: #ff758c !important;
+    opacity: 1;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ffe4e1;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #4a4a4a;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease;
+    margin: 15px 0;
+}
+
+input[type="date"]:focus {
+    border-color: #ff758c;
+}
+
+/* --- ЕКРАН ДНЯ НАРОДЖЕННЯ --- */
+#birthday-screen {
+    max-width: 650px;
+}
+
+.bday-wishes {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.bday-explanation {
+    font-size: 1rem;
+    background: #fff0f5;
+    padding: 15px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    color: #6c5b7b;
+}
+
+.bday-hero-photo img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.bday-section h2 {
+    font-size: 1.25rem;
+    color: #6c5b7b;
+    margin: 30px 0 15px 0;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+    transform: scale(1.03);
+}
+
+.old-photos img {
+    filter: sepia(0.15) contrast(1.05);
+}
+
+.bday-promise {
+    background: linear-gradient(135deg, #fff6f6 0%, #ffeded 100%);
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 35px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: left;
+    border-left: 5px solid #ff7eb3;
+}
+
+
+/* Контейнер для завантаження */
+#pwa-loader-screen {
+    display: flex; /* Відцентруємо картку лоадера */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 420px;
+}
+
+.loader-container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 50px 30px; /* Збільшили відступи, щоб картка була солідною */
+    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.loader-container h2 {
+    color: #6c5b7b;
+    font-size: 1.3rem; /* Трохи більший шрифт для чистоти */
+    margin-bottom: 25px;
+}
+
+/* Кільце завантаження */
+.loader-ring {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border: 6px solid #fff0f5;
+    border-radius: 50%;
+    border-top: 6px solid #ff758c;
+    animation: spinRing 1s linear infinite;
+}
+
+@keyframes spinRing {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- СТИЛІ ДЛЯ WELCOME-SCREEN, ЩОБ ВІН НЕ НАКЛАДАВСЯ --- */
+#welcome-screen {
+    width: 100%;
+    max-width: 420px;
+    /* Гарантуємо, що він з'явиться тільки поверх усього, коли активний */
+    position: relative; 
+}
+
+/* Другорядна кнопка для екрану перевірки */
+.secondary-btn {
+    background: linear-gradient(135deg, #a7a7a7 0%, #b5b5b5 100%) !important;
+    box-shadow: 0 4px 15px rgba(167, 167, 167, 0.3) !important;
+}
+
+/* Кнопка налаштувань на фінальному екрані */
+#settings-final {
+    width: 100%;
+    background: linear-gradient(135deg, #6c5b7b 0%, #857195 100%);
+    box-shadow: 0 4px 15px rgba(108, 91, 123, 0.3);
+}
